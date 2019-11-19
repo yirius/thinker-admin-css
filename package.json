@@ -1,0 +1,9 @@
+{
+  "name": "thinker-admin-css",
+  "version": "1.0.0",
+  "dependencies": {
+    "gulp": "^0.0.1",
+    "gulp-uglify": "^0.0.1",
+    "pump": "^0.0.1"
+  }
+}
