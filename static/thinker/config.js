@@ -96,9 +96,7 @@ layui.define(function (exports) {
         //全局 table 配置
         //参数请参照 https://www.layui.com/doc/modules/table.html
         table: {
-            page: {
-                layout: ['refresh', 'prev', 'page', 'next', 'skip', 'count', 'limit']
-            },
+            page: true,
             size: 'sm',
             even: true,
             skin: 'line',
@@ -111,19 +109,19 @@ layui.define(function (exports) {
             request: {
                 pageName: 'page', //页码的参数名称，默认：page
                 limitName: 'limit' //每页数据量的参数名，默认：limit
-            }
+            },
         },
-        //Table的toolbar，加上刷新
-        toolbar: {
-            icon: {
+        //设置table对应的上方defaulttoolbar自定义按钮等
+        tableToolbar: {
+            layout: {
                 refresh: {
                     title: '刷新',
                     layEvent: 'LAYTABLE_REFRESH',
                     icon: 'layui-icon-refresh'
                 }
             },
-            events: {
-                LAYTABLE_REFRESH: function(that, _this){
+            event: {
+                LAYTABLE_REFRESH: function(that, $this){
                     that.reload();
                 }
             }
@@ -172,13 +170,14 @@ layui.define(function (exports) {
             clipboard: 'lay/extends/clipboard',
             //excel带入
             excel: 'lay/extends/excel',
-            xlsx: 'lay/extends/xlsx',
-            FileSaver: 'lay/extends/FileSaver',
-            jszip: 'lay/extends/jszip',
             //加强select
             formSelects: 'lay/extends/formSelects',
             //加强输入框
             tinymce: 'lay/extends/tinymce',
+            //选择iconFonts
+            iconFonts: 'lay/extends/iconFonts',
+            //选择protree
+            protree: 'lay/extends/protree',
         },
     })
 });

@@ -3093,6 +3093,10 @@ textarea::-webkit-input-placeholder {
 .layui-laypage-limits select:focus {
     outline: none;
 }
+.thinker-tabs-body .layui-form-item .layui-footer{
+    position: initial;
+    background: transparent;
+}
 
 /* 自定义参数 */
 .table-action-area {

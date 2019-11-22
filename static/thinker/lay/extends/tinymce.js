@@ -2,26 +2,27 @@
 //  http://tinymce.ax-z.cn/   中文文档
 
 layui.define(['jquery'],function (exports) {
-    var $ = layui.$
+    var $ = layui.$;
 
     var modFile = layui.cache.modules['tinymce'];
 
     var modPath = modFile.substr(0, modFile.lastIndexOf('.'))
 
-    var setter = layui.setter || {}
+    var setter = layui.conf || {};
 
-    var response = setter.response || {}
+    var response = setter.response || {};
 
+    //基础设置
     var settings = {
         base_url: modPath
-        , images_upload_url: '/rest/doUpload'//图片上传接口
+        , images_upload_url: '/thinkeradmin/admin/upload'//图片上传接口
         , language: 'zh_CN'
         , response: {
             statusName: response.statusName || 'code'//返回状态字段
             , msgName: response.msgName || 'msg'//返回消息字段
             , dataName: response.dataName || 'data'//返回的数据
             , statusCode: response.statusCode || {
-                ok: 0//数据正常
+                ok: 1//数据正常
             }
         }
         , success: function (res, succFun, failFun) {//上传完成回调
@@ -35,15 +36,16 @@ layui.define(['jquery'],function (exports) {
 
     var t = {};
 
+    //写渲染的函数
     t.render = function (option) {
 
         var admin = layui.admin || {}
 
-        option.base_url = option.base_url ? option.base_url : settings.base_url
+        option.base_url = option.base_url ? option.base_url : settings.base_url;
 
-        option.language = option.language ? option.language : settings.language
+        option.language = option.language ? option.language : settings.language;
 
-        option.selector = option.selector ? option.selector : option.elem
+        option.selector = option.selector ? option.selector : option.elem;
 
         option.quickbars_selection_toolbar = option.quickbars_selection_toolbar ? option.quickbars_selection_toolbar : 'cut copy | bold italic underline strikethrough '
 
@@ -51,13 +53,13 @@ layui.define(['jquery'],function (exports) {
 
         option.toolbar = option.toolbar ? option.toolbar : 'undo redo | forecolor backcolor bold italic underline strikethrough | indent2em alignleft aligncenter alignright alignjustify outdent indent | link bullist numlist image table codesample | formatselect fontselect fontsizeselect';
 
-        option.resize = false;
+        option.resize = option.resize || true;
 
-        option.elementpath = false
+        option.elementpath = option.elementpath || false;
 
-        option.branding = false;
+        option.branding = option.branding || false;
 
-        option.contextmenu_never_use_native = true;
+        option.contextmenu_never_use_native = option.contextmenu_never_use_native || true;
 
         option.menubar = option.menubar ? option.menubar : 'file edit insert format table';
 
