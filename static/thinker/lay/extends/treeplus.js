@@ -13,7 +13,7 @@ layui.define('form', function(exports){
         ,layer = layui.layer
 
         //模块名
-        ,MOD_NAME = 'protree'
+        ,MOD_NAME = 'treeplus'
 
         //外部接口
         ,tree = {

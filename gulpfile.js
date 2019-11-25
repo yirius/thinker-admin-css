@@ -19,33 +19,39 @@ var DEST = 'release/', note = [
 ];
 
 var tasks = {
+    copyJson: function(){
+        gulp.src([
+            "./static/json/**/*"
+        ]).pipe(gulp.dest(DEST+"static/json/"));
+    },
     copyLayui: function(){
         gulp.src([
-                "./static/layui/**/*",
-                "!./static/layui/lay/modules/table.js",
-                "!./static/layui/lay/modules/form.js",
-            ])
-            .pipe(gulp.dest(DEST+"static/layui/"));
+            "./static/layui/**/*"
+        ]).pipe(gulp.dest(DEST+"static/layui/"));
     },
     copyLogo: function(){
         gulp.src([
-                "./static/logo/**/*",
-            ])
-            .pipe(gulp.dest(DEST+"static/logo/"));
+            "./static/logo/**/*",
+        ]).pipe(gulp.dest(DEST+"static/logo/"));
     },
     copyThinker: function(){
         gulp.src([
-                "./static/thinker/**/*",
-                "!./static/thinker/css/thinker-default.css",
-                "!./static/thinker/lay/modules/*",
-                "!./static/thinker/lay/extends/tinymce.js",
-                "!./static/thinker/lay/extends/excel.js",
-                "!./static/thinker/lay/extends/echarsTheme.js",
-                "!./static/thinker/lay/extends/md5.js",
-                "!./static/thinker/lay/extends/helper.js",
-                "!./static/thinker/lay/extends/protree.js",
-            ])
-            .pipe(gulp.dest(DEST+"static/thinker/"));
+            "./static/thinker/**/*",
+            "!./static/thinker/css/thinker-default.css",
+            "!./static/thinker/lay/modules/*",
+            "!./static/thinker/lay/extends/tinymce.js",
+            "!./static/thinker/lay/extends/excel.js",
+            "!./static/thinker/lay/extends/echarsTheme.js",
+            "!./static/thinker/lay/extends/md5.js",
+            "!./static/thinker/lay/extends/helper.js",
+            "!./static/thinker/lay/extends/protree.js",
+            "!./static/thinker/lay/extends/tableplus.js",
+        ]).pipe(gulp.dest(DEST+"static/thinker/"));
+    },
+    copyAdminHtml: function(){
+        gulp.src([
+            "./admin.html",
+        ]).pipe(gulp.dest(DEST));
     },
     minCss: function(){
         gulp.src([
@@ -57,16 +63,16 @@ var tasks = {
             .pipe(header.apply(null, note))
             .pipe(gulp.dest(DEST+"static/thinker/css/"));
     },
-    minLayuiTable: function(){
-        gulp.src([
-                './static/layui/lay/modules/table.js',
-                './static/layui/lay/modules/form.js'
-            ])
-            // 这会输出一个压缩过的并且重命名未 foo.min.js 的文件
-            .pipe(uglify())
-            .pipe(header.apply(null, note))
-            .pipe(gulp.dest(DEST+"static/layui/lay/modules/"));
-    },
+    // minLayuiTable: function(){
+    //     gulp.src([
+    //             './static/layui/lay/modules/table.js',
+    //             './static/layui/lay/modules/form.js'
+    //         ])
+    //         // 这会输出一个压缩过的并且重命名未 foo.min.js 的文件
+    //         .pipe(uglify())
+    //         .pipe(header.apply(null, note))
+    //         .pipe(gulp.dest(DEST+"static/layui/lay/modules/"));
+    // },
     minThinkerModules: function(){
         gulp.src('./static/thinker/lay/modules/*')
         // 这会输出一个压缩过的并且重命名未 foo.min.js 的文件
@@ -82,6 +88,7 @@ var tasks = {
                 "./static/thinker/lay/extends/md5.js",
                 "./static/thinker/lay/extends/helper.js",
                 "./static/thinker/lay/extends/protree.js",
+                "./static/thinker/lay/extends/tableplus.js",
             ])
             .pipe(uglify())
             .pipe(header.apply(null, note))

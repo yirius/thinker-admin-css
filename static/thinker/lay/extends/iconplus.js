@@ -9,7 +9,7 @@ layui.define(['laypage', 'form'], function (exports) {
 
     var IconFonts =function () {
             this.v = '1.0.beta';
-        }, _MOD = 'IconFonts',
+        }, _MOD = 'iconplus',
         _this = this,
         $ = layui.jquery,
         laypage = layui.laypage,
@@ -50,8 +50,8 @@ layui.define(['laypage', 'form'], function (exports) {
             selected = 'layui-form-selected',
             unselect = 'layui-unselect';
 
-        layui.link("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");//font-awesome图标css
-        layui.link('https://www.layuicdn.com/layui-v2.5.4/css/layui.css');//layui_css
+        // layui.link("https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");//font-awesome图标css
+        // layui.link('https://www.layuicdn.com/layui-v2.5.4/css/layui.css');//layui_css
 
 
         var a = {
