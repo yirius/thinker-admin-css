@@ -294,7 +294,20 @@ layui.extend({
         },
         //找到当前界面，然后刷新
         reloadTable: function(){
-
+            $(".thinker-tabs-menu .thinker-tabs-active").each(function(){
+                var url = $(this).attr("lay-url");
+                $("#"+conf.views.containerBody).find(".thinker-tabs-item[lay-url='"+url+"']").each(function(){
+                    $(this).find("table").each(function(){
+                        if(this.id){
+                            layui.tableplus.reload(this.id);
+                        }
+                    });
+                });
+            });
+        },
+        //执行事件
+        callEvents: function(eventName){
+            events[eventName] && events[eventName].call(this);
         }
     };
 

@@ -149,6 +149,12 @@ layui.define(function (exports) {
                 notShow: function(){
                     return false;
                 }
+            },{
+                title: "清理缓存",
+                event: "clearcache",
+                notShow: function(){
+                    return false;
+                }
             }]
         },
         //后台对应的事件触发
