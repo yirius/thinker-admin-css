@@ -433,6 +433,28 @@ layui.extend({
             next()
         }
         return false;
+    }).on('click', '[lay-photos]', function (e) {
+        var _this = this, data = [], startIndex = 0, id = "photos"+(new Date()).getTime();
+        $('[lay-photos="'+$(this).attr('lay-photos')+'"]').each(function(n,v){
+            if(_this == v){
+                startIndex = n;
+            }
+            var that = $(v);
+            data.push({
+                alt: that.attr("alt"),
+                pid: that.attr("id") || id + "n",
+                src: that.attr("src") || that.attr("href"),
+                thumb: that.attr("src") || that.attr("href"),
+            });
+        });
+        layui.layer.photos({
+            photos: {
+                title: "相册预览",
+                id: id,
+                start: startIndex,
+                data: data
+            }
+        })
     }).on('click', '[lay-popup]', function (e) {
         //点击了界面上的弹出
         var params = $(this).attr('lay-popup')
