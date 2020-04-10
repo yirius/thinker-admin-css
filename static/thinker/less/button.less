@@ -1,0 +1,43 @@
+//重写btn参数
+.layui-btn {
+  position: relative;
+  border: 0;
+}
+
+//默认隐藏after
+.layui-btn::after {
+  display: none;
+}
+
+//当采用边框线
+.layui-btn[class*=line] {
+  background-color: transparent;
+  &::after {
+    content: " ";
+    display: block;
+    width: 200%;
+    height: 200%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 0.5px solid currentColor;
+    transform: scale(.5);
+    transform-origin: 0 0;
+    box-sizing: border-box;
+    border-radius: 6px;
+    z-index: 1;
+    pointer-events: none;
+  }
+}
+
+.layui-btn.round[class*="line"]::after {
+  border-radius: 500px;
+}
+
+.layui-btn[class*="lines"]::after {
+  border: 3px solid currentColor;
+}
+
+.layui-btn[class*="bg-"]::after {
+  display: none;
+}

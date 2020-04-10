@@ -1,0 +1,280 @@
+/*  -- flex弹性布局 -- */
+
+@base-length: 20;
+
+@layoutSelector: {
+  xs: 20;
+  sm: 40;
+  df: 50;
+  lg: 60;
+  xl: 80;
+}
+
+.flex {
+  display: flex;
+
+  each(@layoutSelector, {
+    &-@{key} {
+      flex-basis: (@value * 1%);
+    }
+  });
+
+  each(range(20), {
+    &-@{value}, &-@{key} {
+      flex: @value;
+    }
+  });
+
+  &-direction {
+    flex-direction: column;
+  }
+
+  &-wrap {
+    flex-wrap: wrap;
+  }
+
+  &-align {
+    &-start {
+      align-items: flex-start;
+    }
+    &-end {
+      align-items: flex-end;
+    }
+    &-center {
+      align-items: center;
+    }
+    &-stretch {
+      align-items: stretch;
+    }
+  }
+
+  &-self {
+    &-start {
+      align-self: flex-start;
+    }
+    &-center {
+      align-self: flex-center;
+    }
+    &-end {
+      align-self: flex-end;
+    }
+    &-stretch {
+      align-self: stretch;
+    }
+  }
+
+  &-justify {
+    &-start {
+      justify-content: flex-start;
+    }
+    &-end {
+      justify-content: flex-end;
+    }
+    &-center {
+      justify-content: center;
+    }
+    &-between {
+      justify-content: space-between;
+    }
+    &-around {
+      justify-content: space-around;
+    }
+  }
+}
+
+/* grid布局 */
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+
+  each(range(10), {
+    &.col-@{value}>* {
+      width: (100% / @value);
+    }
+  });
+}
+
+/** 设置padding和margin **/
+@pmSelector: {
+  xs: @base-length - 15;
+  sm: @base-length - 5;
+  md: @base-length + 5;
+  lg: @base-length + 15;
+  xl: @base-length + 25;
+}
+
+each(@pmSelector, {
+  .margin {
+    &-@{key} {
+      margin: (@value * 1px);
+    }
+    &-top-@{key} {
+      margin-top: (@value * 1px);
+    }
+    &-left-@{key} {
+      margin-left: (@value * 1px);
+    }
+    &-right-@{key} {
+      margin-right: (@value * 1px);
+    }
+    &-bottom-@{key} {
+      margin-bottom: (@value * 1px);
+    }
+    &-tb-@{key} {
+      margin-top: (@value * 1px);
+      margin-bottom: (@value * 1px);
+    }
+    &-lr-@{key} {
+      margin-left: (@value * 1px);
+      margin-right: (@value * 1px);
+    }
+  }
+  .padding {
+    &-@{key}{
+      padding: (@value * 1px);
+    }
+    &-top-@{key} {
+      padding-top: (@value * 1px);
+    }
+    &-left-@{key} {
+      padding-left: (@value * 1px);
+    }
+    &-right-@{key} {
+      padding-right: (@value * 1px);
+    }
+    &-bottom-@{key} {
+      padding-bottom: (@value * 1px);
+    }
+    &-tb-@{key} {
+      padding-top: (@value * 1px);
+      padding-bottom: (@value * 1px);
+    }
+    &-lr-@{key} {
+      padding-left: (@value * 1px);
+      padding-right: (@value * 1px);
+    }
+  }
+});
+
+.margin {
+  margin: (@base-length * 1px);
+  &-top {
+    margin-top: (@base-length * 1px);
+  }
+  &-left {
+    margin-left: (@base-length * 1px);
+  }
+  &-right {
+    margin-right: (@base-length * 1px);
+  }
+  &-bottom {
+    margin-bottom: (@base-length * 1px);
+  }
+  &-tb {
+    margin-top: (@base-length * 1px);
+    margin-bottom: (@base-length * 1px);
+  }
+  &-lr {
+    margin-left: (@base-length * 1px);
+    margin-right: (@base-length * 1px);
+  }
+}
+.padding {
+  padding: (@base-length * 1px);
+  &-top {
+    padding-top: (@base-length * 1px);
+  }
+  &-left {
+    padding-left: (@base-length * 1px);
+  }
+  &-right {
+    padding-right: (@base-length * 1px);
+  }
+  &-bottom {
+    padding-bottom: (@base-length * 1px);
+  }
+  &-tb {
+    padding-top: (@base-length * 1px);
+    padding-bottom: (@base-length * 1px);
+  }
+  &-lr {
+    padding-left: (@base-length * 1px);
+    padding-right: (@base-length * 1px);
+  }
+}
+
+//浮动和高宽效果
+.fl {
+  float: left;
+}
+.fr {
+  float: right;
+}
+.widthAll {
+  width: 100%;
+}
+.heightAll {
+  height: 100%;
+}
+
+//对layui的row进行扩展
+@layoutRowSelector: range(13, 24);
+
+each(@layoutRowSelector, {
+  .layui-row.col-@{value} {
+    each(range(@value), .(@v, @k, @i) {
+      & > .layui-col-xs@{v} {
+        width: (100% / @value * @v);
+      }
+      & > .layui-col-xs-offset@{v} {
+        margin-left: (100% / @value * @v);
+      }
+    });
+  }
+});
+
+@media screen and (min-width: 768px) {
+  each(@layoutRowSelector, {
+    .layui-row.col-@{value} {
+      each(range(@value), .(@v, @k, @i) {
+        & > .layui-col-sm@{v} {
+          width: (100% / @value * @v);
+        }
+        & > .layui-col-sm-offset@{v} {
+          margin-left: (100% / @value * @v);
+        }
+      });
+    }
+  });
+}
+
+@media screen and (min-width: 992px) {
+  each(@layoutRowSelector, {
+    .layui-row.col-@{value} {
+      each(range(@value), .(@v, @k, @i) {
+        & > .layui-col-md@{v} {
+          width: (100% / @value * @v);
+        }
+        & > .layui-col-md-offset@{v} {
+          margin-left: (100% / @value * @v);
+        }
+      });
+    }
+  });
+}
+
+@media screen and (min-width: 1200px) {
+  each(@layoutRowSelector, {
+    .layui-row.col-@{value} {
+      each(range(@value), .(@v, @k, @i) {
+        & > .layui-col-lg@{v} {
+          width: (100% / @value * @v);
+        }
+        & > .layui-col-lg-offset@{v} {
+          margin-left: (100% / @value * @v);
+        }
+      });
+    }
+  });
+}

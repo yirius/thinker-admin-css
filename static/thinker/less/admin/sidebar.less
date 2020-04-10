@@ -1,0 +1,104 @@
+.thinker-admin-app {
+  & a {
+    outline: none;
+  }
+
+  & .layui-body, & .thinker-header .layui-layout-left,
+  & .thinker-tabs-wrap .thinker-tabs-menu,& .thinker-tabs-wrap .thinker-tabs-prev {
+    left: 245px;
+  }
+
+  & .layui-side {
+    top: 0;
+    z-index: 1001;
+    overflow: hidden;
+    background-color: #393D49;
+    & .layui-side-scroll {
+      width: 265px;
+    }
+
+    //图表的设置
+    & .layui-icon {
+      display: inline-block;
+      width: 25px;
+      margin-right: 6px;
+      font-size: 1.2rem;
+    }
+
+    & .layui-nav .layui-nav-item a {
+      user-select: none;
+      font-size: 14px;
+      line-height: 48px;
+      height: 48px;
+    }
+
+    .layui-nav-itemed>.layui-nav-child {
+      background-color: transparent !important;
+    }
+    .layui-nav-tree .layui-nav-item a:hover {
+      background-color: #4E5465;
+    }
+    & .layui-nav .layui-nav-child dd.layui-this a,& .layui-nav .layui-this a {
+      background-color: #4E5465;
+    }
+  }
+
+  & .layui-side, & .layui-logo, & .layui-side ul {
+    width: 245px;
+  }
+
+  //最上方logo设置
+  & .layui-logo {
+    cursor: pointer;
+    overflow: hidden;
+    position: static;
+    font-size: 21px;
+    padding: 0;
+    line-height: 62px;
+    height: 62px;
+    transition: height 0.8s cubic-bezier(0.075,0.82,0.165,1);
+
+    & img {
+      width: 32px;
+      margin-bottom: 4px;
+      margin-right: 3px;
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    & span {
+      border-bottom-width: 0;
+      font-size: 1.2rem;
+      color: white;
+    }
+  }
+}
+
+//侧边收缩
+.thinker-shrink-app {
+  & .thinker-sidebar {
+    left: 0;
+    width: 52px;
+    & .layui-nav-item .layui-nav-child {
+      display: none;
+    }
+
+    & .layui-logo {
+      height: 0;
+    }
+  }
+  & .layui-body, & .thinker-header .layui-layout-left,
+  & .thinker-tabs-wrap .thinker-tabs-menu,& .thinker-tabs-wrap .thinker-tabs-prev {
+    left: 56px;
+  }
+  & .thinker-header .layui-icon-shrink-right:before {
+    content: '\e66b';
+  }
+}
+
+//给侧边相关的所有参数加上过渡效果
+.thinker-sidebar,
+.thinker-header .layui-layout-left,
+.layui-layout-admin .layui-body {
+  transition: all 0.5s cubic-bezier(0.86, 0, 0.07, 1);
+}

@@ -1,0 +1,106 @@
+@import "color/_colors";
+
+@size: 2.5em;
+@thickness: 0.5em;
+// Calculated variables.
+@lat: (@size - @thickness) / 2;
+@offset: @lat - @thickness;
+
+.thinker-loading-mask {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background-color: rgba(255, 255, 255, 0.7);
+  cursor: not-allowed;
+  z-index: 99999;
+}
+
+.thinker-loading-btn {
+  cursor: not-allowed;
+  &:before {
+    content: "";
+    position: absolute;
+    top: -1px;
+    right: -1px;
+    bottom: -1px;
+    left: -1px;
+    z-index: 1;
+    background: #fff;
+    border-radius: inherit;
+    opacity: 0.2;
+    -webkit-transition: opacity 0.5s;
+    transition: opacity 0.5s;
+    pointer-events: none;
+  }
+  & .layui-icon, & .fa {
+    margin-left: -6px;
+    transition: margin-left 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  }
+}
+
+.thinker-loading {
+  position: absolute;
+  left: calc(50% - (@size / 2));
+  top: calc(50% - (@size / 2));
+  width: @size;
+  height: @size;
+  transform: rotate(165deg);
+
+  &:before, &:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: block;
+    width: @thickness;
+    height: @thickness;
+    border-radius: @thickness / 2;
+    transform: translate(-50%, -50%);
+  }
+
+  &:before {
+    animation: loadingBefore 2s infinite;
+  }
+
+  &:after {
+    animation: loadingAfter 2s infinite;
+  }
+}
+
+@keyframes loadingBefore {
+  0% {
+    width: @thickness;
+    box-shadow: @lat (-@offset) @blue-6, (-@lat) @offset @yellow-6;
+  }
+  35% {
+    width: @size;
+    box-shadow: 0 (-@offset) @blue-6, 0 @offset @yellow-6;
+  }
+  70% {
+    width: @thickness;
+    box-shadow: (-@lat) (-@offset) @blue-6, @lat @offset @yellow-6;
+  }
+  100% {
+    box-shadow: @lat (-@offset) @blue-6, (-@lat) @offset @yellow-6;
+  }
+}
+
+@keyframes loadingAfter {
+  0% {
+    height: @thickness;
+    box-shadow: @offset @lat @cyan-6, (-@offset) (-@lat) @volcano-6;
+  }
+  35% {
+    height: @size;
+    box-shadow: @offset 0 @cyan-6, (-@offset) 0 @volcano-6;
+  }
+  70% {
+    height: @thickness;
+    box-shadow: @offset (-@lat) @cyan-6, (-@offset) @lat @volcano-6;
+  }
+  100% {
+    box-shadow: @offset @lat @cyan-6, (-@offset) (-@lat) @volcano-6;
+  }
+}

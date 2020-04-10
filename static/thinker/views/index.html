@@ -433,8 +433,8 @@
 </div>
 <script>
   layui.use(
-    ['admin', 'echarts', 'element', 'helper', 'table', 'util'],
-    function(admin, echarts, element, helper, table, util) {
+    ['admin', 'echarts', 'element', 'table', 'util'],
+    function(admin, echarts, element, table, util) {
       var $ = layui.jquery
       var view = $('#VIEW-chart-index')
       element.render('progress')
@@ -493,7 +493,7 @@
         var seriesData = []
         var xAxisData = []
         for (var i = 1; i <= 12; i++) {
-          var val = helper.rand(8000, 10000)
+          var val = Math.random() * 10000
           seriesData.push(val)
           xAxisData.push((i < 10 ? '0' + i : i) + ':00')
         }

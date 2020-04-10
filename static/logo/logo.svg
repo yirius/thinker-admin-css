@@ -1,25 +1,18 @@
-<svg version="1.0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-     width="100%" height="100%" viewBox="0 0 62.000000 62.000000" preserveAspectRatio="xMidYMid meet"
-     color-interpolation-filters="sRGB" class="el-tooltip" style="margin: auto;">
-    <g fill="#913234" class="icon-text-wrapper icon-svg-group iconsvg"
-       transform="translate(1,0)">
-        <g class="iconsvg-imagesvg" transform="translate(0,0)">
-            <rect fill="#913234" fill-opacity="0" stroke-width="2" x="0" y="0" width="60" height="61.76005273566258"
-                  class="image-rect"></rect>
-            <svg x="0" y="0" width="60" height="61.76005273566258" class="image-svg-svg">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 151.7 156.15">
-                    <g>
-                        <g>
-                            <path fill="#FF0000"
-                                  d="M123.1 147.9V81.83l28.6-16.51V48.8L80.19 90.09v16.52l28.61-16.52v66.06l14.3-8.25z"></path>
-                            <path fill="#3D85C6"
-                                  d="M118.76 57.8L61.55 24.77l28.6-16.51L75.85 0 4.33 41.29l14.31 8.26 28.6-16.52 57.21 33.03 14.31-8.26z"></path>
-                            <path fill="#F1C232"
-                                  d="M42.91 156.15V90.09l28.6 16.52V90.09L0 48.8v16.52l28.61 16.51v66.07l14.3 8.25z"></path>
-                        </g>
-                    </g>
+<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
+     width="100%" height="100%"
+     viewBox="0 0 60.000000 60.000000"
+     preserveAspectRatio="xMidYMid meet"
+     color-interpolation-filters="sRGB">
+    <g fill="#9e394f" transform="translate(0,4)">
+        <g transform="translate(0,0)">
+            <svg x="0" y="0" width="60" height="51.810584958219" class="image-svg-svg">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 143.6 124">
+                    <path fill="#f5222d" d="M143.6 80.6l-.2.3H94l-22.2-38L46.9.1 47 0h49.6l.1.1z" />
+                    <path fill="#1890ff" d="M71.8 42.9l-22.2 38-25 43.1L.4 81.3l-.4-.7L46.9.1z" />
+                    <path fill="#faad14" d="M50.1 80.9L25 124h-.4l25-43.1z" />
+                    <path fill="#faad14" d="M143.4 80.9L119 124H25l25.1-43.1z" />
                 </svg>
-            </svg> <!---->
+            </svg>
         </g>
     </g>
 </svg>

@@ -1,0 +1,96 @@
+@import "../color/_colors";
+
+//首先写tabs的隐藏
+.thinker-tabs-hidden {
+  display: none;
+}
+
+.thinker-tabs-wrap {
+  z-index: 999;
+  position: fixed;
+  top: 50px;
+  white-space: nowrap;
+  padding: 0 80px 0 30px;
+  box-sizing: border-box;
+  width: 100%;
+  font-size: 12px;
+  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.05);
+  background-color: @white;
+
+  & .thinker-tabs-menu {
+    position: relative;
+    transition: left 0.3s;
+  }
+
+  & .thinker-tabs-menu li,
+  & .thinker-tabs-action {
+    text-align: center;
+    border-right: 1px solid @gray-2;
+    cursor: pointer;
+    height: 36px;
+    line-height: 36px;
+    transition: all 0.3s ease;
+  }
+
+  & .thinker-tabs-action:hover,
+  & .thinker-tabs-menu li:hover {
+    background: @gray-2 !important;
+  }
+
+  & .thinker-tabs-menu li {
+    display: inline-block;
+    padding-left: 25px;
+    line-height: 38px;
+    color: #999;
+    user-select: none;
+  }
+
+  //选中的指示球
+  & .thinker-tabs-ball {
+    display: inline-block;
+    height: 5px;
+    width: 5px;
+    border-radius: 100%;
+    background: @gray-2;
+    vertical-align: middle;
+    margin-right: 6px;
+    position: relative;
+    top: -1px;
+    transition: background 0.3s ease;
+  }
+  & li.thinker-tabs-active .thinker-tabs-ball {
+    background-color: @blue-4 !important;
+    box-shadow: 0 0 7px @blue-2;
+  }
+
+  //关闭
+  & .thinker-tabs-close {
+    font-size: 10px;
+    margin-left: 10px;
+    height: 36px;
+    width: 30px;
+    display: inline-block;
+    transition: color 0.3s ease;
+  }
+
+  & .thinker-tabs-action {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 240px;
+    z-index: 1;
+    width: 30px;
+    color: #999;
+  }
+
+  & .thinker-tabs-next {
+    left: auto;
+    right: 31px;
+    border-left: 1px solid @gray-2;
+  }
+
+  & .thinker-tabs-down {
+    left: auto;
+    right: 0;
+  }
+}

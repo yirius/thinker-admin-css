@@ -1,0 +1,42 @@
+@import "color/_colors";
+
+//批量设置颜色
+each(@colors-primary, {
+  //设置背景色
+  .bg-@{key} {
+    background-color: @value;
+    color: if((@key = white) or (@key = ghostWhite), @black, @white);
+  }
+  //设置浅色背景色
+  .bg-@{key}.light,.bg-@{key}[disabled] {
+    background-color: color(~`colorPalette('@{value}', 4) `);
+    color: if((@key = white) or (@key = ghostWhite), @black, @white);
+  }
+  //设置浅色背景色
+  .bg-gradual-@{key} {
+    background-image: linear-gradient(45deg, color(~`colorPalette('@{value}', 8) `), color(~`colorPalette('@{value}', 4) `));
+    color: if((@key = white) or (@key = ghostWhite), @black, @white);
+  }
+  //设置边框线
+  .line-@{key}::after,
+  .lines-@{key}::after {
+    border-color: @value;
+  }
+  //设置内部字体颜色
+  .line-@{key}, .lines-@{key}, .text-@{key} {
+    color: @value;
+    &:hover{
+      color: @value;
+    }
+  }
+});
+
+.bg-shadeTop {
+  background-image: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.01));
+  color: @white;
+}
+
+.bg-shadeBottom {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.01), rgba(0, 0, 0, 1));
+  color: @white;
+}

@@ -1,0 +1,61 @@
+.text {
+  &-xs {
+    font-size: (10rem / 14) !important;
+  }
+  &-sm {
+    font-size: (12rem / 14) !important;
+  }
+  &-df {
+    font-size: 1rem !important;
+  }
+  &-lg {
+    font-size: (16rem / 14) !important;
+  }
+  &-xl {
+    font-size: (18rem / 14) !important;
+  }
+  &-xxl {
+    font-size: (22rem / 14) !important;
+  }
+  &-sl {
+    font-size: (40rem / 14) !important;
+  }
+  &-xsl {
+    font-size: (60rem / 14) !important;
+  }
+
+  &-Abc {
+    text-transform: Capitalize;
+  }
+  &-ABC {
+    text-transform: Uppercase;
+  }
+  &-abc {
+    text-transform: Lowercase;
+  }
+  &-price::before {
+    content: "¥";
+    font-size: 80%;
+    margin-right: 2px;
+  }
+  &-cut {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  &-bold {
+    font-weight: bold;
+  }
+  &-center {
+    text-align: center;
+  }
+  &-left {
+    text-align: left;
+  }
+  &-right {
+    text-align: right;
+  }
+  &-content {
+    line-height: 1.6;
+  }
+}

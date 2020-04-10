@@ -1,0 +1,39 @@
+.layui-layout-admin {
+  & .layui-body {
+    top: 0;
+    bottom: 0;
+    padding-top: 50px;
+    padding-bottom: 15px;
+  }
+  & .thinker-tabs-body{
+    padding-top: 86px;
+    float: left;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .layui-layout-admin {
+    & .layui-body, & .thinker-header {
+      width: 100%;
+    }
+    & .thinker-tabs-body{
+      padding-top: 50px;
+    }
+    & .thinker-tabs-wrap {
+      display: none;
+    }
+  }
+  .thinker-shrink-app {
+    & .thinker-sidebar {
+      width: 0;
+    }
+    & .layui-body, & .thinker-header .layui-layout-left,
+    & .thinker-tabs-wrap .thinker-tabs-menu,& .thinker-tabs-wrap .thinker-tabs-prev {
+      left: 0;
+    }
+  }
+
+  .thinker-header .layui-nav .layui-nav-child {
+    left: -30px;
+  }
+}
