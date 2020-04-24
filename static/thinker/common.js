@@ -20,20 +20,6 @@
         });
     }
 
-    if(typeof layui.formSelects !== "undefined"){
-        var formSelects = layui.formSelects;
-        function getTemplateCallback(str){
-            var onChange = 'function(name, value, selected, disabled){return ' + str + '}';
-            return new Function("return " + onChange)();
-        }
-        $("select[xm-select]").each(function(n, v){
-            var options = $.extend({}, $(v).data());
-            if(options.template) options.template = getTemplateCallback(options.template);
-
-            v.formSelects = formSelects.render($(v).attr("xm-select"), options);
-        });
-    }
-
     if(typeof layui.laydate !== "undefined"){
         function getDateCallback(str){
             var onChange = 'function(value, date, endDate){' + str + '}';

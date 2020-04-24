@@ -141,6 +141,63 @@
                     callback && callback(useSecond, useInterval);
                 }
             }, 1000);
+        },
+        /**
+         * 生成二维码
+         * @param elem
+         * @param params
+         * @returns {layui.qrcode}
+         */
+        qrcode: function(elem, params) {
+            if (elem instanceof $) elem = elem.get(0);
+            if (!layui.qrcode) console.error('请先引入 qrcode 模块！');
+
+            var width = $(elem).width(), height = $(elem).height();
+
+            var defaultParams = {
+                text: '',
+                width: width>height?height:width,
+                height: width>height?height:width,
+                colorDark: '#000000',
+                colorLight: '#ffffff'
+            };
+
+            if (typeof params != 'object') params = { text: params };
+            params = $.extend(defaultParams, params);
+
+            if (this.ie8) {
+                params.width += 20;
+                params.height += 20;
+            }
+
+            var qrcode = new layui.qrcode(elem, params);
+
+            if (this.ie8) {
+                $(elem)
+                    .find('table')
+                    .css('margin', 0)
+            }
+
+            return qrcode
+        },
+        /**
+         * 生成随机
+         * @param minNum
+         * @param maxNum
+         * @returns {number}
+         */
+        rand: function(minNum, maxNum) {
+            switch (arguments.length) {
+                case 1:
+                    return parseInt(Math.random() * minNum + 1, 10);
+                    break;
+                case 2:
+                    return parseInt(Math.random() * (maxNum - minNum + 1) + minNum, 10);
+                    break;
+                default:
+                    return 0;
+                    break;
+            }
         }
     };
 

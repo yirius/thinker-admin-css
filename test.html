@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover">
+    <title>Title</title>
+    <link rel="stylesheet" href="./static/layui/css/layui.css" />
+    <link rel="stylesheet" href="./static/thinker/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="./static/thinker/css/thinker.css" />
+    <link href="http://cdn.bootcss.com/highlight.js/8.0/styles/monokai_sublime.min.css" rel="stylesheet">
+    <style>
+        .layui-no-scrollbar .layui-layer-content::-webkit-scrollbar {
+            display: none;
+        }
+        .layui-no-scrollbar .layui-layer-content{
+            scrollbar-width: none; /* firefox */
+            -ms-overflow-style: none; /* IE 10+ */
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+        .layui-no-scrollbar .layui-form-select {
+            height: 100%;
+        }
+        .layui-no-scrollbar .layui-form-select dl {
+            top: 0;
+        }
+        div.layui-table-edit{
+            word-break:keep-all;
+            white-space:nowrap;
+            overflow:hidden;
+            text-overflow:ellipsis;
+        }
+    </style>
+    <script>
+        var colors = [
+            "pink", "magenta", "red", "volcano", "orange",
+            "yellow", "gold", "cyan", "lime", "green", "blue",
+            "geekblue", "purple", "gray", "white", "black"
+        ];
+    </script>
+</head>
+<body>
+<ul class="layui-nav layui-nav-tree fl" lay-filter="nav"
+    style="position:fixed;top: 0;left: 0" id="navList">
+    <li class="layui-nav-item layui-this"><a href="">Flex优化</a></li>
+    <li class="layui-nav-item"><a href="">Grid美化</a></li>
+    <li class="layui-nav-item"><a href="">布局辅助</a></li>
+    <li class="layui-nav-item"><a href="">色彩展示</a></li>
+    <li class="layui-nav-item"><a href="">Text展示</a></li>
+    <li class="layui-nav-item"><a href="">徽章优化</a></li>
+    <li class="layui-nav-item"><a href="">阴影边框优化</a></li>
+    <li class="layui-nav-item"><a href="">按钮美化</a></li>
+    <li class="layui-nav-item"><a href="">Laydate优化</a></li>
+    <li class="layui-nav-item"><a href="">Table优化</a></li>
+    <li class="layui-nav-item"><a href="">fileSelect展示</a></li>
+</ul>
+<div class="layui-tab layui-tab-brief fr" lay-filter="doc" style="width: calc(100% - 200px);margin: 0">
+    <ul class="layui-tab-title layui-hide" id="tabList">
+        <li class="layui-this">Flex优化</li>
+        <li class="">Grid美化</li>
+        <li class="">布局辅助</li>
+        <li class="">色彩展示</li>
+        <li class="">Text展示</li>
+        <li class="">徽章优化</li>
+        <li class="">阴影边框优化</li>
+        <li class="">按钮美化</li>
+        <li class="">Laydate优化</li>
+        <li class="">Table优化</li>
+        <li class="">fileSelect展示</li>
+    </ul>
+    <div class="layui-tab-content">
+        <!--布局Flex-->
+        <div class="layui-tab-item layui-show">
+            <div class="padding-sm">
+                <fieldset class="layui-elem-field layui-field-title site-title">
+                    <legend>
+                        <a name="use">Rows扩展</a>
+                        <span class="text-df">(从col-13到col-24全部支持，最大支持col-24)</span>
+                    </legend>
+                </fieldset>
+                <div>
+                    <div class="layui-row col-24">
+                        <div class="layui-col-xs6 padding-sm bg-gray">col-24 > layui-col-xs6</div>
+                        <div class="layui-col-xs6 layui-col-xs-offset1 padding-sm bg-gray">col-24 > layui-col-xs6</div>
+                    </div>
+                    <div class="layui-row col-24 margin-top-xs">
+                        <div class="layui-col-xs24 padding-sm bg-gray">col-24 > layui-col-xs24</div>
+                    </div>
+                </div>
+<pre class="margin-top-sm"><code class="lang-html"></code></pre>
+            </div>
+
+            <div class="padding-sm">
+                <fieldset class="layui-elem-field layui-field-title site-title">
+                    <legend><a name="use">固定尺寸Flex</a></legend>
+                </fieldset>
+                <div>
+                    <div class="flex flex-wrap">
+                        <div class="flex-xs bg-gray padding-sm margin-xs" id="flex-xs">flex-xs(20%)</div>
+                        <div class="flex-lg padding-sm"></div>
+
+                        <div class="flex-sm bg-gray padding-sm margin-xs">flex-sm(40%)</div>
+                        <div class="flex-sm padding-sm"></div>
+
+                        <div class="flex-df bg-gray padding-sm margin-xs">flex-df(50%)</div>
+                        <div class="flex-lg bg-gray padding-sm margin-xs">flex-lg(60%)</div>
+                        <div class="flex-xl bg-gray padding-sm margin-xs">flex-xl(80%)</div>
+                    </div>
+                </div>
+<pre ><code class="lang-html"></code></pre>
+            </div>
+
+            <div class="padding-sm">
+                <fieldset class="layui-elem-field layui-field-title site-title">
+                    <legend>
+                        <a name="use">比例布局Flex</a>
+                        <span class="text-df">(最大支持flex-20)</span>
+                    </legend>
+                </fieldset>
+                <div>
+                    <div class="flex">
+                        <div class="flex-1 bg-gray padding-sm margin-xs">flex-1</div>
+                        <div class="flex-1 bg-gray padding-sm margin-xs">flex-1</div>
+                    </div>
+                    <div class="flex">
+                        <div class="flex-3 bg-gray padding-sm margin-xs">flex-3</div>
+                        <div class="flex-20 bg-gray padding-sm margin-xs">flex-20</div>
+                    </div>
+                    <div class="flex">
+                        <div class="flex-3 bg-gray padding-sm margin-xs">flex-3</div>
+                        <div class="flex-5 bg-gray padding-sm margin-xs">flex-5</div>
+                        <div class="flex-1 bg-gray padding-sm margin-xs">flex-1</div>
+                    </div>
+                </div>
+<pre ><code class="lang-html"></code></pre>
+            </div>
+
+            <div class="padding-sm">
+                <fieldset class="layui-elem-field layui-field-title site-title">
+                    <legend>
+                        <a name="use">水平布局</a>
+                        <span class="text-df"></span>
+                    </legend>
+                </fieldset>
+                <div>
+                    <div class="flex flex-justify-start">
+                        <div class="flex-xs bg-gray padding-sm margin-xs">flex-justify-start</div>
+                        <div class="flex-xs bg-gray padding-sm margin-xs"></div>
+                    </div>
+                    <div class="flex flex-justify-end">
+                        <div class="flex-xs bg-gray padding-sm margin-xs">flex-justify-end</div>
+                    </div>
+                    <div class="flex flex-justify-center">
+                        <div class="flex-xs bg-gray padding-sm margin-xs">flex-justify-center</div>
+                    </div>
+                    <div class="flex flex-justify-between">
+                        <div class="flex-xs bg-gray padding-sm margin-xs">flex-justify-between</div>
+                        <div class="flex-xs bg-gray padding-sm margin-xs"></div>
+                    </div>
+                    <div class="flex flex-justify-around">
+                        <div class="flex-xs bg-gray padding-sm margin-xs">flex-justify-around</div>
+                        <div class="flex-xs bg-gray padding-sm margin-xs"></div>
+                    </div>
+                </div>
+<pre ><code class="lang-html"></code></pre>
+            </div>
+
+            <div class="padding-sm">
+                <fieldset class="layui-elem-field layui-field-title site-title">
+                    <legend>
+                        <a name="use">垂直布局</a>
+                        <span class="text-df"></span>
+                    </legend>
+                </fieldset>
+                <div>
+                    <div class="flex flex-align-start">
+                        <div class="flex-xs bg-gray padding-lg margin-xs">flex-align-start</div>
+                        <div class="flex-xs bg-gray padding-sm margin-xs"></div>
+                    </div>
+                    <div class="flex flex-align-center">
+                        <div class="flex-xs bg-gray padding-lg margin-xs">flex-align-center</div>
+                        <div class="flex-xs bg-gray padding-sm margin-xs"></div>
+                    </div>
+                    <div class="flex flex-align-end">
+                        <div class="flex-xs bg-gray padding-lg margin-xs">flex-align-end</div>
+                        <div class="flex-xs bg-gray padding-sm margin-xs"></div>
+                    </div>
+                    <div class="flex flex-align-stretch">
+                        <div class="flex-xs bg-gray padding-lg margin-xs">flex-align-stretch</div>
+                        <div class="flex-xs bg-gray padding-sm margin-xs"></div>
+                    </div>
+                </div>
+<pre ><code class="lang-html"></code></pre>
+            </div>
+        </div>
+        <!--布局Grid-->
+        <div class="layui-tab-item">
+            <div class="padding-sm">
+                <fieldset class="layui-elem-field layui-field-title site-title">
+                    <legend>
+                        <a name="use">列水平等分</a>
+                        <span class="text-df">(最大支持col-10)</span>
+                    </legend>
+                </fieldset>
+                <div>
+                    <div class="grid col-2">
+                        <div class="bg-gray padding-sm">1</div>
+                        <div class="bg-brown padding-sm">1</div>
+                        <div class="bg-olive padding-sm">1</div>
+                        <div class="bg-gray padding-sm">1</div>
+                    </div>
+                    <div class="grid col-3 margin-top-sm">
+                        <div class="bg-gray padding-sm">1</div>
+                        <div class="bg-olive padding-sm">1</div>
+                        <div class="bg-gray padding-sm">1</div>
+                        <div class="bg-olive padding-sm">1</div>
+                        <div class="bg-gray padding-sm">1</div>
+                        <div class="bg-olive padding-sm">1</div>
+                    </div>
+                    <div class="grid col-10 margin-top-sm">
+                        <div class="bg-gray padding-sm">1</div>
+                        <div class="bg-blue padding-sm">1</div>
+                        <div class="bg-orange padding-sm">1</div>
+                        <div class="bg-olive padding-sm">1</div>
+                        <div class="bg-yellow padding-sm">1</div>
+                        <div class="bg-pink padding-sm">1</div>
+                        <div class="bg-gray padding-sm">1</div>
+                        <div class="bg-blue padding-sm">1</div>
+                        <div class="bg-orange padding-sm">1</div>
+                        <div class="bg-olive padding-sm">1</div>
+                        <div class="bg-yellow padding-sm">1</div>
+                        <div class="bg-pink padding-sm">1</div>
+                    </div>
+                </div>
+<pre class="margin-top-xs"><code class="lang-html"></code></pre>
+            </div>
+
+            <div class="padding-sm">
+                <fieldset class="layui-elem-field layui-field-title site-title">
+                    <legend>
+                        <a name="use">列水平等分同时等高</a>
+                        <span class="text-df"></span>
+                    </legend>
+                </fieldset>
+                <div>
+                    <div class="grid col-2 margin-top-sm">
+                        <div class="bg-gray padding-xl">1</div>
+                        <div class="bg-blue padding-sm">1</div>
+                        <div class="bg-orange padding-sm">1</div>
+                        <div class="bg-olive padding-sm">1</div>
+                    </div>
+                </div>
+<pre class="margin-top-xs"><code class="lang-html"></code></pre>
+            </div>
+        </div>
+        <!--布局辅助-->
+        <div class="layui-tab-item">
+            <div class="padding-sm">
+                <fieldset class="layui-elem-field layui-field-title site-title">
+                    <legend>
+                        <a name="use">浮动和100%高宽</a>
+                        <span class="text-df"></span>
+                    </legend>
+                </fieldset>
+                <div>
+                    <div class="widthAll">
+                        <div class="padding-sm fl bg-gray">This use fl</div>
+                        <div class="padding-sm fr bg-gray">This use fr</div>
+                    </div>
+                    <br style="clear: both"/>
+                    <div class="widthAll padding-sm bg-gray margin-top-sm">widthAll, 同理存在heightAll</div>
+                </div>
+                <pre class="margin-top-xs"><code class="lang-html"></code></pre>
+            </div>
+            <div class="padding-sm">
+                <fieldset class="layui-elem-field layui-field-title site-title">
+                    <legend>
+                        <a name="use">内外边距</a>
+                        <span class="text-df">(xs(5px)/sm(15px)/df(25px)/lg(35px)/xl(45px)以及什么也不带(20px))</span>
+                    </legend>
+                </fieldset>
+            </div>
+            <div class="grid col-2 bg-white">
+                <script>
+                    var mpTypes = {
+                        "外边距": "margin-{size}",
+                        "内边距": "padding-{size}",
+                        "外边距无参": "margin",
+                        "内边距无参": "padding",
+                        "左外边距": "margin-left-{size}",
+                        "左内边距": "padding-left-{size}",
+                        "右外边距": "margin-right-{size}",
+                        "右内边距": "padding-right-{size}",
+                        "上外边距": "margin-top-{size}",
+                        "上内边距": "padding-top-{size}",
+                        "下外边距": "margin-bottom-{size}",
+                        "下内边距": "padding-bottom-{size}",
+                        "上下外边距": "margin-tb-{size}",
+                        "上下内边距": "padding-tb-{size}",
+                        "左右外边距": "margin-lr-{size}",
+                        "左右内边距": "padding-lr-{size}",
+                    }
+                    for(var i in mpTypes) {
+                        document.write("<div class=\"padding-sm\"><div class=\"padding-xs\">"+i+"</div><div class=\"padding-xs\">"+mpTypes[i]+"</div></div>")
+                    }
+                </script>
+            </div>
+        </div>
+        <!--色彩展示-->
+        <div class="layui-tab-item padding-sm">
+            <blockquote class="layui-elem-quote">普通颜色:</blockquote>
+            <div class="grid col-3">
+                <script>
+                    for(var i in colors) {
+                        document.write("<div class='padding-xs'><div class='padding-sm bg-"+colors[i]+"'>bg-"+colors[i]+"</div></div>");
+                    }
+                </script>
+            </div>
+            <blockquote class="layui-elem-quote">浅色:(普通颜色和#FFFFFF中间值)</blockquote>
+            <div class="grid col-3">
+                <script>
+                    for(var i in colors) {
+                        document.write("<div class='padding-xs'><div class='padding-sm bg-"+colors[i]+" light'>bg-"+colors[i]+"</div></div>");
+                    }
+                </script>
+            </div>
+            <blockquote class="layui-elem-quote">渐变色:(普通颜色和#FFFFFF中间值)</blockquote>
+            <div class="grid col-3">
+                <script>
+                    for(var i in colors) {
+                        document.write("<div class='padding-xs'><div class='padding-sm bg-gradual-"+colors[i]+"'>bg-gradual-"+colors[i]+"</div></div>");
+                    }
+                </script>
+            </div>
+        </div>
+        <!--文字展示-->
+        <div class="layui-tab-item padding-sm">
+            <div class="text-xsl">text-xsl</div>
+            <div class="text-sl">text-sl</div>
+            <div class="text-xxl">text-xxl</div>
+            <div class="text-xl">text-xl</div>
+            <div class="text-lg">text-lg</div>
+            <div class="text-df">text-df</div>
+            <div class="text-sm">text-sm</div>
+            <div class="text-xs">text-xs</div>
+
+            <blockquote class="layui-elem-quote">字体颜色:</blockquote>
+            <div class="grid col-4">
+                <script>
+                    for(var i in colors) {
+                        document.write("<div class='padding-xs'><div class='padding-sm text-"+colors[i]+"'>text-"+colors[i]+"</div></div>");
+                    }
+                </script>
+            </div>
+
+            <blockquote class="layui-elem-quote">字体阴影:</blockquote>
+            <div class="grid col-4">
+                <script>
+                    for(var i in colors) {
+                        document.write("<div class='padding-xs'><div class='padding-sm text-"+colors[i]+" text-shadow'>text-"+colors[i]+"</div></div>");
+                    }
+                </script>
+            </div>
+
+            <blockquote class="layui-elem-quote">字体Cut:</blockquote>
+            <div class="text-cut widthAll">
+                <script>
+                    for(var i in colors) {
+                        document.write("12312313123112312");
+                    }
+                </script>
+            </div>
+
+            <blockquote class="layui-elem-quote">字体对齐:</blockquote>
+            <div class="widthAll text-left">
+                text-left
+            </div>
+            <div class="widthAll text-center">
+                text-center
+            </div>
+            <div class="widthAll text-right">
+                text-right
+            </div>
+
+            <blockquote class="layui-elem-quote">字体格式:</blockquote>
+            <div class="widthAll text-price text-lg">
+                20.00text-price
+            </div>
+            <div class="widthAll text-Abc">
+                text-Abc首字母大写
+            </div>
+            <div class="widthAll text-ABC">
+                text-ABC全部大写
+            </div>
+            <div class="widthAll text-abc">
+                text-abc全部小写
+            </div>
+        </div>
+        <!--小徽章-->
+        <div class="layui-tab-item padding-sm">
+            <div class="padding-sm">
+                <fieldset class="layui-elem-field layui-field-title site-title">
+                    <legend>
+                        <a name="use">徽章类型</a>
+                        <span class="text-df"></span>
+                    </legend>
+                </fieldset>
+                <div>
+                    <span class="layui-badge-dot"></span>
+                    <span class="layui-badge">99+</span>
+                    <span class="layui-badge-rim">6</span>
+                </div>
+                <pre class="margin-top-xs"><code class="lang-html"></code></pre>
+            </div>
+            <div class="padding-sm">
+                <fieldset class="layui-elem-field layui-field-title site-title">
+                    <legend>
+                        <a name="use">徽章颜色</a>
+                        <span class="text-df">(配合bg-color使用)</span>
+                    </legend>
+                </fieldset>
+                <div>
+                    <div class="grid col-3">
+                        <script>
+                            for(var i in colors) {
+                                document.write("<div class='padding-xs'><div class='layui-badge bg-"+colors[i]+"'>"+colors[i]+"</div></div>");
+                            }
+                        </script>
+                    </div>
+                </div>
+            </div>
+            <div class="padding-sm">
+                <fieldset class="layui-elem-field layui-field-title site-title">
+                    <legend>
+                        <a name="use">徽章镂空</a>
+                        <span class="text-df">(配合line-color使用)</span>
+                    </legend>
+                </fieldset>
+                <div>
+                    <div class="grid col-3">
+                        <script>
+                            for(var i in colors) {
+                                document.write("<div class='padding-xs'><div class='layui-badge line-"+colors[i]+"'>"+colors[i]+"</div></div>");
+                            }
+                        </script>
+                    </div>
+                </div>
+            </div>
+            <div class="padding-sm">
+                <fieldset class="layui-elem-field layui-field-title site-title">
+                    <legend>
+                        <a name="use">胶囊徽章</a>
+                        <span class="text-df"></span>
+                    </legend>
+                </fieldset>
+                <div>
+                    <div class="layui-capsule">
+                        <div class="layui-badge bg-blue">111</div>
+                        <div class="layui-badge line-blue">111</div>
+                    </div>
+                    <div class="layui-capsule round">
+                        <div class="layui-badge bg-blue">111</div>
+                        <div class="layui-badge line-blue">111</div>
+                    </div>
+                    <div class="layui-capsule round">
+                        <div class="layui-badge bg-blue"><i class="fa fa-adjust"></i></div>
+                        <div class="layui-badge line-blue">111</div>
+                    </div>
+                </div>
+                <pre class="margin-top-xs"><code class="lang-html"></code></pre>
+            </div>
+            <div class="padding-sm">
+                <fieldset class="layui-elem-field layui-field-title site-title">
+                    <legend>
+                        <a name="use">角标badge</a>
+                        <span class="text-df"></span>
+                    </legend>
+                </fieldset>
+                <div>
+                    <div class="layui-row">
+                        <div class="layui-col-xs1 padding-lg bg-gray">
+                            <div class="layui-badge badge-top-left">99+</div>
+                        </div>
+                        <div class="layui-col-xs1 layui-col-xs-offset1 padding-lg bg-gray">
+                            <div class="layui-badge badge-top-right">99+</div>
+                        </div>
+                        <div class="layui-col-xs1 layui-col-xs-offset1 padding-lg bg-gray">
+                            <div class="layui-badge badge-bottom-left">99+</div>
+                        </div>
+                        <div class="layui-col-xs1 layui-col-xs-offset1 padding-lg bg-gray">
+                            <div class="layui-badge badge-bottom-right">99+</div>
+                        </div>
+                    </div>
+                </div>
+                <pre class="margin-top-xs"><code class="lang-html"></code></pre>
+            </div>
+            <div class="padding-sm">
+                <fieldset class="layui-elem-field layui-field-title site-title">
+                    <legend>
+                        <a name="use">头像</a>
+                        <span class="text-df"></span>
+                    </legend>
+                </fieldset>
+                <div class="file-ico text-lg"></div>
+                <div class="file-ico bg-red text-lg"></div>
+                <div class="file-ico bg-orange text-lg"></div>
+                <div class="folder-ico"></div>
+                <div class="folder-ico bg-red text-lg"></div>
+                <div class="folder-ico bg-orange text-lg"></div>
+                <div class="padding-sm">
+                    <span class="avatar"></span>
+                    <span class="avatar round"></span>
+                    <span class="avatar sm round"></span>
+                    <span class="avatar xs round"></span>
+                    <span class="avatar lg round"></span>
+                    <span class="avatar xl round"></span>
+                    <div class="avatar-group">
+                        <span class="avatar round"></span>
+                        <span class="avatar round"></span>
+                        <span class="avatar round"></span>
+                        <span class="avatar round"></span>
+                    </div>
+                </div>
+                <pre class="margin-top-xs"><code class="lang-html"></code></pre>
+            </div>
+        </div>
+        <!--阴影效果-->
+        <div class="layui-tab-item padding-sm">
+            <div class="padding-sm">
+                <fieldset class="layui-elem-field layui-field-title site-title">
+                    <legend>
+                        <a name="use">阴影效果</a>
+                        <span class="text-df"></span>
+                    </legend>
+                </fieldset>
+                <div>
+                    <div class="padding-sm bg-gray"></div>
+                    <div class="padding-sm bg-gray shadow margin-top-lg">shadow</div>
+                    <div class="padding-sm bg-gray shadow-lg margin-top-lg">shadow-lg</div>
+                    <div class="padding-sm bg-gradual-blue shadow-lg margin-top-lg">shadow-lg</div>
+                </div>
+                <pre class="margin-top-lg"><code class="lang-html"></code></pre>
+            </div>
+            <div class="padding-sm">
+                <fieldset class="layui-elem-field layui-field-title site-title">
+                    <legend>
+                        <a name="use">边框效果</a>
+                        <span class="text-df"></span>
+                    </legend>
+                </fieldset>
+                <div class="bg-white padding-sm">
+                    <div class="padding-sm bg-white">no Params</div>
+                    <div class="padding-sm bg-white solid margin-top-sm">solid</div>
+                    <div class="padding-sm bg-white solid-top margin-top-sm">solid-top</div>
+                    <div class="padding-sm bg-white solid-bottom margin-top-sm">solid-bottom</div>
+                    <div class="padding-sm bg-white solid-left margin-top-sm">solid-left</div>
+                    <div class="padding-sm bg-white solid-right margin-top-sm">solid-right</div>
+                    <div class="padding-sm bg-white solids margin-top-sm">solids</div>
+                    <div class="padding-sm bg-white solids-top margin-top-sm">solids-top</div>
+                    <div class="padding-sm bg-white solids-bottom margin-top-sm">solids-bottom</div>
+                    <div class="padding-sm bg-white solids-left margin-top-sm">solids-left</div>
+                    <div class="padding-sm bg-white solids-right margin-top-sm">solids-right</div>
+                </div>
+                <pre class="margin-top-lg"><code class="lang-html"></code></pre>
+            </div>
+        </div>
+        <!--按钮美化-->
+        <div class="layui-tab-item">
+            <div class="padding-sm">
+                <fieldset class="layui-elem-field layui-field-title site-title">
+                    <legend>
+                        <a name="use">按钮样式</a>
+                        <span class="text-df"></span>
+                    </legend>
+                </fieldset>
+                <div>
+                    <button class="layui-btn">默认</button>
+                    <button class="layui-btn radius">小圆角radius</button>
+                    <button class="layui-btn round">大圆角round</button>
+                </div>
+                <pre class="margin-top-xs"><code class="lang-html"></code></pre>
+            </div>
+            <div class="padding-sm">
+                <fieldset class="layui-elem-field layui-field-title site-title">
+                    <legend>
+                        <a name="use">按钮大小</a>
+                        <span class="text-df"></span>
+                    </legend>
+                </fieldset>
+                <div>
+                    <button class="layui-btn layui-btn-xs">layui-btn-xs</button>
+                    <button class="layui-btn layui-btn-sm">layui-btn-sm</button>
+                    <button class="layui-btn">默认</button>
+                    <button class="layui-btn layui-btn-lg">layui-btn-lg</button>
+                </div>
+                <pre class="margin-top-xs"><code class="lang-html"></code></pre>
+            </div>
+
+            <div class="padding-sm">
+                <fieldset class="layui-elem-field layui-field-title site-title">
+                    <legend>
+                        <a name="use">按钮背景</a>
+                        <span class="text-df">(配合bg-color使用)</span>
+                    </legend>
+                </fieldset>
+                <div>
+                    <div class="grid col-4">
+                        <script>
+                            for(var i in colors) {
+                                document.write("<div class='padding-xs'><div class='layui-btn bg-"+colors[i]+" widthAll'>bg-"+colors[i]+"</div></div>");
+                            }
+                        </script>
+                    </div>
+                </div>
+            </div>
+
+            <div class="padding-sm">
+                <fieldset class="layui-elem-field layui-field-title site-title">
+                    <legend>
+                        <a name="use">镂空按钮</a>
+                        <span class="text-df">(配合bg-color使用)</span>
+                    </legend>
+                </fieldset>
+                <div>
+                    <div class="grid col-4">
+                        <script>
+                            for(var i in colors) {
+                                document.write("<div class='padding-xs'><div class='layui-btn line-"+colors[i]+" widthAll'>line-"+colors[i]+"</div></div>");
+                            }
+                        </script>
+                    </div>
+                </div>
+            </div>
+
+            <div class="padding-sm">
+                <fieldset class="layui-elem-field layui-field-title site-title">
+                    <legend>
+                        <a name="use">镂空深边按钮</a>
+                        <span class="text-df">(配合bg-color使用)</span>
+                    </legend>
+                </fieldset>
+                <div>
+                    <div class="grid col-4">
+                        <script>
+                            for(var i in colors) {
+                                document.write("<div class='padding-xs'><div class='layui-btn lines-"+colors[i]+" widthAll'>lines-"+colors[i]+"</div></div>");
+                            }
+                        </script>
+                    </div>
+                </div>
+            </div>
+
+            <div class="padding-sm">
+                <fieldset class="layui-elem-field layui-field-title site-title">
+                    <legend>
+                        <a name="use">按钮Loading</a>
+                        <span class="text-df"></span>
+                    </legend>
+                </fieldset>
+                <div class="widthAll padding">
+                    <button class="layui-btn" id="loading-btn">
+                        <span class="fa fa-adjust"></span>
+                        Button触发Loading
+                    </button>
+
+                    <div class="layui-btn" id="loading-btn-div">
+                        <span class="fa fa-adjust"></span>
+                        DIV触发Loading
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--laydate优化-->
+        <div class="layui-tab-item">
+            <div class="padding-sm">
+                <fieldset class="layui-elem-field layui-field-title site-title">
+                    <legend>
+                        <a name="use">Laydate点击关闭时加入done</a>
+                        <span class="text-df"></span>
+                    </legend>
+                </fieldset>
+                <div style="display: none">
+                    //绑定关闭控件事件
+                    lay(document).on('click', function(e){
+                        if(e.target === options.elem[0]
+                            || e.target === options.eventElem[0]
+                            || e.target === lay(options.closeStop)[0]){
+                            return;
+                        }
+                        var isHasElem = document.querySelector("#"+that.elem.id);
+                        that.remove();
+                        //说明之前打开了panel
+                        if(isHasElem != null) {
+                            that.done({}, "closed");
+                        }
+                    })
+                </div>
+                <pre class="margin-top-xs"><code class="lang-html"></code></pre>
+            </div>
+        </div>
+        <!--Table优化-->
+        <div class="layui-tab-item">
+            <div class="padding-sm bg-white">
+                <table id="thinker-table" lay-filter="thinker-table"></table>
+            </div>
+        </div>
+        <!--fileSelect展示-->
+        <div class="layui-tab-item">
+            <div class="padding-sm">
+                <fieldset class="layui-elem-field layui-field-title site-title">
+                    <legend>
+                        <a name="use">fileSelect展示</a>
+                        <span class="text-df"></span>
+                    </legend>
+                    <div>
+                        <button id="file-select" class="layui-btn bg-cyan">
+                            点击上传
+                        </button>
+
+                        <button id="file-select1" class="layui-btn bg-cyan">
+                            点击上传1
+                        </button>
+                        <div class="folder-ico">
+
+                        </div>
+                        <div class="folder-ico full">
+
+                        </div>
+                        <div class="file-ico">
+
+                        </div>
+                        <div class="file-ico bg-red">
+
+                        </div>
+                        <div class="file-ico bg-cyan">
+
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="./static/layui/layui.js"></script>
+<script src="http://cdn.bootcss.com/highlight.js/8.0/highlight.min.js"></script>
+<script>
+    layui.config({
+        //指定 admin 项目路径
+        base: './static/thinker/',
+        version: true,
+        debug: true
+    }).use(["element", "index", "tableplus", "thinkerTable", "fileSelect"], function(){
+        var element = layui.element;
+
+        //渲染code
+        layui.$("code").each(function(n,v){
+            var curV = layui.$(v);
+            var reHtml = curV.parent().prev().html().replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/                    /g, "");
+            curV.html(reHtml.trim());
+        });
+
+        hljs.initHighlighting();
+
+        //渲染联动操作
+        var navList = layui.$("#navList"), tabList = layui.$("#tabList");
+        navList.on("click", "a", function(e){
+            e.preventDefault();
+            var elem = layui.$(this).parent()[0];
+            navList.children().each((n, v) => {
+                if(v == elem) {
+                    tabList.children().get(n).click();
+                }
+            });
+            window.scrollTo(0, 0);
+            return false;
+        });
+
+        //两个loading渲染
+        layui.$("#loading-btn").click(function(){
+            layui.$(this).loading();
+            var that = this;
+            setTimeout(function(){
+                layui.$(that).loading();
+            }, 5000);
+        });
+
+        layui.$("#loading-btn-div").click(function(){
+            layui.$(this).loading();
+            var that = this;
+            setTimeout(function(){
+                layui.$(that).loading();
+            }, 5000);
+        });
+
+        //第一个实例
+        var thinkerTable = layui.tableplus.render({
+            elem: '#thinker-table'
+            ,height: 500
+            ,url: "/index/test/index"
+            ,page: true //开启分页
+            ,cols: [[ //表头
+                {field: 'id', title: 'ID', width:80, sort: true, fixed: 'left',filter: true}
+                ,{field: 'username', title: '用户名', width:80, edit: "datetime"}
+                ,{field: 'sex', title: '性别', width:80, sort: true, edit: "datetime"}
+                ,{field: 'city', title: '城市', width:80, edit: "select"}
+                ,{field: 'sign', title: '签名', width: 177}
+                ,{field: 'jifen', title: '积分', width: 80, sort: true}
+                ,{field: 'pingfen', title: '评分', width: 80, sort: true}
+                ,{field: 'zhiye', title: '职业', width: 80}
+                ,{field: 'date', title: '日期选择', width: 80, templet: "<div><input lay-date='' class='thinker-table-input' type='text' readonly/></div>"}
+                ,{field: 'wealth', title: '财富', width: 135, sort: true, totalRow: true}
+            ]]
+            ,response: {
+                statusName: 'code' //规定数据状态的字段名称，默认：code
+                ,statusCode: 1 //规定成功的状态码，默认：0
+                ,msgName: 'msg' //规定状态信息的字段名称，默认：msg
+                ,countName: 'count' //规定数据总数的字段名称，默认：count
+                ,dataName: 'data' //规定数据列表的字段名称，默认：data
+            }
+            ,loading: true
+            ,done: function(res, curr, count){
+            }
+            ,toolbar: 'default'
+            ,totalRow: true
+            ,thinkerCache: true
+            ,thinkerDrag: {
+                simple: true,
+                toolbar: true
+            }
+            //设置的参数
+            ,thinkerEdit: {
+                username: {
+                    type: "date"
+                },
+                sex: {
+                    type: "datetime",
+                    range: "/"
+                },
+                city: {
+                    items: [{
+                        text: "北京",
+                        value: "110000"
+                    },{
+                        text: "天津",
+                        value: "120000"
+                    },{
+                        text: "河北",
+                        value: "130000"
+                    }]
+                }
+            }
+        });
+
+        layui.fileSelect.render({
+            elem: "#file-select",
+            uploadUrl: "/index/test/upload",
+            selectDone: function(data) {
+                console.log(data);
+            }
+        });
+
+        layui.fileSelect.render({
+            elem: "#file-select1"
+        });
+    });
+</script>
+</html>

@@ -27,6 +27,35 @@ layui.define([
             this.appBodyId && this.appBodyId.html('')
         },
         /**
+         * 弹出界面
+         * @param options
+         * @returns {*}
+         */
+        popup: function(options){
+            var success = options.success,skin = options.skin;
+
+            delete options.success;
+            delete options.skin;
+
+            return layui.layer.open($.extend({
+                type: 1,
+                title: '温馨提示',
+                content: '',
+                id: 'LAY-system-view-popup',
+                skin: 'layui-layer-admin' + (skin ? ' ' + skin : ''),
+                shadeClose: true,
+                // closeBtn: false,
+                success: function(layero, index){
+                    var elemClose = $('<i class="layui-icon" close>&#x1006;</i>');
+                    layero.append(elemClose);
+                    elemClose.on('click', function(){
+                        layui.layer.close(index);
+                    });
+                    typeof success === 'function' && success.apply(this, arguments);
+                }
+            }, options))
+        },
+        /**
          * 抓取html内容
          * @param url
          * @param callback
@@ -87,12 +116,23 @@ layui.define([
 
             var appRoot = this.appBodyId || this.appId;
 
+            //防止出现js先加载，然后再进行html渲染，所以将js延后渲染
+            var scripts = [];
+            htmlElem.children().each(function(n, v){
+                if(v.tagName === "SCRIPT" && ($(v).attr("type") || "JAVASCRIPT").toUpperCase() == "JAVASCRIPT") {
+                    scripts.push(v);
+                    v.remove();
+                }
+            });
+
             appRoot[modeName || "html"](htmlElem.html());
 
             if (modeName == 'prepend') {
-                this.parseHtml(appRoot.children('[lay-url="' + url + '"]'))
+                this.parseHtml(appRoot.children('[lay-url="' + url + '"]'));
+                appRoot.children().eq(0).append(scripts);
             } else {
-                this.parseHtml(appRoot)
+                this.parseHtml(appRoot);
+                appRoot.append(scripts);
             }
 
             //重新对面包屑进行渲染

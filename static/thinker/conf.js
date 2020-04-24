@@ -51,8 +51,13 @@
         extendlibs: {
             "md5": "libs/md5",
             "excel": "libs/excel",
+            "qrcode": "libs/qrcode",
+            "tinymce": "libs/tinymce",
             "echarts": "libs/echarts",
             "xmSelect": "libs/xmSelect",
+            "iconplus": "libs/iconplus",
+            "treeplus": "libs/treeplus",
+            "clipboard": "libs/clipboard",
             "tableplus": "libs/tableplus",
             "fileSelect": "libs/fileSelect",
             "thinkerTable": "libs/thinkerTable",
@@ -133,8 +138,8 @@
             },
             //对应的一些接口
             apis: {
-                menu: "./static/json/menu.json",//"thinkeradmin/Admin/menus",
-                login: "./static/json/login.json",//"thinkeradmin/Admin/login",
+                menu: "/thinkeradmin/Admin/menus",
+                login: "/thinkeradmin/Admin/login",
                 captcha: "/thinkeradmin/Admin/captcha",
                 sms: "",
                 qrcode: "",
@@ -148,9 +153,9 @@
                 //是否使用验证码
                 vercode: true,
                 //短信验证码登录
-                sms: true,
+                sms: false,
                 //二维码扫码登录
-                qrcode: true
+                qrcode: false
             },
             events: {
                 userinfo() {

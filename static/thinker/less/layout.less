@@ -91,6 +91,7 @@
   each(range(10), {
     &.col-@{value}>* {
       width: (100% / @value);
+      box-sizing: border-box;
     }
   });
 }

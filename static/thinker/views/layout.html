@@ -32,7 +32,7 @@
                 {{# } }); }}
                 <li class="layui-nav-item" lay-unselect>
                     <a class="layui-hide-xs">
-                        欢迎回来，{{ layui.session.userinfo() || 'Admin'}}
+                        欢迎回来，{{ layui.session.userinfo().username || 'Admin'}}
                     </a>
                     <a class="layui-hide-sm layui-show-xs-inline-block">
                         <i class="layui-icon layui-icon-username"></i>

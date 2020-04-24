@@ -232,12 +232,12 @@
 
 <script>
 
-layui.use(['jquery','form','session','http','layer'],function(){
+layui.use(['jquery','form','session','http','layer','md5','qrcode'],function(){
     var $ = layui.jquery, form = layui.form, layer = layui.layer,
-        conf = layui.conf, session = layui.session, http = layui.http;
+        conf = layui.conf, session = layui.session, http = layui.http, md5 = layui.md5;
 
     //初始化登录类型为密码登录
-    var currentLoginType = 'password';
+    var currentLoginType = 'password', QRExists = false;
 
     //渲染form
     form.render();
@@ -245,7 +245,9 @@ layui.use(['jquery','form','session','http','layer'],function(){
     var viewBody = $('#VIEW-login'),
         tabBtns = viewBody.find('.login-type-tab li'),
         //验证码登录区域
-        verifyImageArea = viewBody.find('.verify-block');
+        verifyImageArea = viewBody.find('.verify-block'),
+        //二维码登录
+        viewQrcode = viewBody.find(".qrcode-image");
 
     //绑定切换图片
     verifyImageArea.find("img").click(function(e){
@@ -270,7 +272,7 @@ layui.use(['jquery','form','session','http','layer'],function(){
             this.tabs('phonecode');
         },
         qrcode:function(){
-            // createQrcode();
+            createQrcode();
             this.normalArea.hide();
             this.elem.qrcode.show();
             currentLoginType = 'qrcode';
@@ -300,6 +302,16 @@ layui.use(['jquery','form','session','http','layer'],function(){
         })
     } else {
         verifyImageArea[conf.admin.login.vercode?'show':'hide']();
+    }
+
+    function createQrcode(){
+        if(QRExists == false){
+            setTimeout(function(){
+                layui.tools.qrcode(viewQrcode, conf.admin.apis.qrcode || "暂未设置二维码登录地址");
+                viewQrcode.find('.layui-icon').hide();
+                QRExists = true;
+            },500)
+        }
     }
 
     var viewSendsmsBtn = viewBody.find('.sendsms'),
@@ -360,35 +372,35 @@ layui.use(['jquery','form','session','http','layer'],function(){
             if(currentLoginType == 'phonecode' && (isNaN(value) || value.length < 3))  return '手机验证码错误'
         }
     });
-    
+
     //提交登录表单
-    form.on('submit(login-submit)',function(data){
-        $(this).loading();
+    form.on('submit(login-submit)',function(formData){
+        var $this = $(this).parent().parent().parent();
+        $this.loading();
 
         http.post(conf.admin.apis.login, {
-            username: data.field.username,
-            password: data.field.password
-        }, function(code, msg, res, all){
-            loading.hide();
+            username: formData.field.username,
+            password: md5(formData.field.password),
+            vercode: formData.field.vercode || '',
+            smscode: formData.field.smsCode
+        }, function(data, msg){
+            $this.loading();
 
-            var token = res[layui.conf.tokenName];
-            delete res[layui.conf.tokenName];
-
-            admin.session.login(token, { user: res });
-
-            if(data.field.autoLogin != 'on'){
-                admin.session.set('login_username', '');
+            if(formData.field.autoLogin != 'on'){
+                session.set('login_username', '');
             }else{
-                admin.session.set('login_username', data.field.username);
+                session.set('login_username', formData.field.username);
             }
 
-            admin.navigate('/');
-        }, function(){
-            loading.hide();
+            session.login(data);
 
-            layui.$('#loginCodeImg').next().remove();
-            layui.view.parse(layui.$('#loginCodeImg'));
+            layui.admin.navigate('/');
+        }, function(){
+            $this.loading();
+
+            verifyImageArea.find("img").click();
         });
+
         return false;
     })
 
